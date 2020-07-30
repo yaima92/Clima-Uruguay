@@ -1,0 +1,33 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align-last: center;
+}
+h2,h3 p {
+    text-align: justify;
+}
+div {
+    background-color: rgb(183, 178, 189);
+    width: fit-content;
+    height: fit-content;
+    float: inherit;
+}
+#ciudad {
+    font-size: xx-large;
+    color: rgb(18, 100, 7);
+    font-weight: bold;
+}
+#temp {
+    font-size: xx-large;
+    color: green;
+    font-weight: bolder;
+    animation: blinker 1s infinite;
+    
+}
+img { align-content: center;
+      width: 100px;
+    height: 100px;}
+@keyframes blinker {
+    50% {
+    opacity: 0;
+    }
+    }

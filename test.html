@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba con Fetch</title>
+    <link href="estilo.css" rel="stylesheet"> <!-- Pequeña hoja de estilos para dar formato-->
+    <script>
+        const url="http://api.openweathermap.org/data/2.5/weather?q=Montevideo,uy&APPID=875d605e0048273b6d86e267dfc17fd3"; 
+        //dirección de la API. Puede ser la ruta a un archivo json. CREA LA TUYA.
+
+        fetch(url) //Realizamos el fetch que devolverá una promesa
+            .then( respuesta=>respuesta.json()) //Obtenemos una promesa que trataremos como json
+            .then(datos=> { //obtenemos una nueva promesa, pero los datos ya están como json.
+                document.getElementById('ciudad').innerHTML= datos.name + ", " + datos.sys.country; //escribo los datos del país
+                document.getElementById('temp').innerHTML=(datos.main.temp -273.15).toFixed(1) + "º";//escribo la temperatura. la convierto de kelvin a celsius
+                document.getElementById('imagen').src="http://openweathermap.org/img/wn/"+ datos.weather[0].icon +".png" //imagen
+                document.getElementById('sen').innerHTML=(datos.main.feels_like -273.15).toFixed(1)
+            })
+            .catch( error => alert("Hubo un error: " + error));
+    </script>
+</head>
+<body>
+    <h1>Clima en Uruguay</h1>
+    <div>
+        <span id="ciudad"></span><br>
+        <span id="temp"> </span>
+        <img id="imagen" src=""><br>
+        <span id="sen"></span>
+    </div>
+   
+<h2>El Clima de Uruguay: Cuando ir a Uruguay</h2>
+<img src="C:\Users\Admin.DESKTOP-0Q23CA9\Desktop\Yaima\repaso\img\4 estaciones.jpg" alt="Cuatro Estaciones en Uruguay"/>
+<p>El clima en Uruguay es templado y húmedo, con veranos cálidos, inviernos frescos, y precipitaciones más o menos homogéneas durante todo el año. Uruguay es el único país de América del Sur que se encuentra íntegramente en la zona templada. La ausencia de sistemas orográficos importantes contribuye a que las variaciones espaciales de temperatura, precipitaciones y otros parámetros no sean tan altas. La temperatura media anual es de aproximadamente 17 ºC.</p>
+<p>El clima de Uruguay es propicio para la producción ganadera a partir de los pastos naturales. Tiene por lo general una acusada estacionalidad, con un pico muy importante en primavera, debido a una combinación óptima de humedad y temperatura, y un déficit muy marcado en invierno para cubrir las necesidades nutricionales, debido a la afectación de la calidad y volumen del forraje por las heladas meteorológicas. La zona sur y este, de características marítimas, tienen un ciclo de producción de forraje más favorable que la región centro y norte.</p>
+<h3>Peligros Climáticos</h3>
+<p>Fuertes vientos estacionales (el pampero es un frío y, ocasionalmente, violento viento que sopla desde las pampas argentinas), sequías, lluvias torrenciales; a causa de la ausencia de montañas, las cuales actúan como barreras climáticas, todas las localizaciones son particularmente vulnerables a los rápidos cambios en el frente climático. Vientos de hasta 200 km/h pueden constatarse con una frecuencia variable de entre 30 y 45 años, 120 km/h es una velocidad más frecuente incluso cada 2 o 5 años.</p>
+</body>
+</html>
